@@ -1,0 +1,298 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 23% 95%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --sidebar-background: 215 28% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: #0B0F19;
+    color: #E5E7EB;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  pre, code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom 3D animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-delay {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes pipeline {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float-delay 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-pipeline {
+  animation: pipeline 3s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6366F1, #22D3EE);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #818CF8, #67E8F9);
+}
+
+/* Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.4);
+  color: white;
+}
+
+.markdown-preview {
+  @apply prose max-w-none prose-invert;
+}
+
+/* Blog article markdown rendering */
+.blog-article {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.blog-article h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 1.75rem 0 1rem;
+  letter-spacing: -0.02em;
+}
+.blog-article h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2rem 0 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  letter-spacing: -0.01em;
+}
+.blog-article h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 1.5rem 0 0.5rem;
+}
+.blog-article p {
+  margin: 1rem 0;
+  color: #94a3b8;
+}
+.blog-article strong {
+  color: #fff;
+  font-weight: 600;
+}
+.blog-article em {
+  color: #c4b5fd;
+  font-style: italic;
+}
+.blog-article a {
+  color: #22d3ee;
+  text-decoration: underline;
+  text-decoration-color: rgba(34, 211, 238, 0.4);
+  text-underline-offset: 3px;
+}
+.blog-article a:hover {
+  text-decoration-color: rgba(34, 211, 238, 1);
+}
+.blog-article ul, .blog-article ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.blog-article ul { list-style: disc; }
+.blog-article ol { list-style: decimal; }
+.blog-article li {
+  margin: 0.4rem 0;
+  color: #94a3b8;
+}
+.blog-article li::marker {
+  color: #6366F1;
+}
+.blog-article blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid #6366F1;
+  background: rgba(99, 102, 241, 0.06);
+  border-radius: 0.5rem;
+  color: #c4b5fd;
+  font-style: italic;
+}
+.blog-article code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  color: #67e8f9;
+  background: rgba(34, 211, 238, 0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(34, 211, 238, 0.15);
+}
+.blog-article pre {
+  margin: 1.25rem 0;
+  padding: 1.25rem;
+  background: #050810;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.blog-article pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #e2e8f0;
+  font-size: inherit;
+}
+.blog-article hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.blog-article table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.blog-article th {
+  background: rgba(99, 102, 241, 0.1);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.blog-article td {
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: #94a3b8;
+}
+.blog-article img {
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}
