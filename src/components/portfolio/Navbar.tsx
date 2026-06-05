@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'DevOps', href: '#devops' },
+    // { label: 'DevOps', href: '#devops' },
     { label: 'Experience', href: '#experience' },
     { label: 'Blog', href: '#blog' },
     { label: 'Contact', href: '#contact' },
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <span className="text-white font-bold text-lg tracking-tight">
-            dev<span className="text-cyan-400">.</span>stack
+            khim<span className="text-cyan-400">.</span>chhetri
           </span>
         </button>
 

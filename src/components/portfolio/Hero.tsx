@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowRight, Download, Terminal, Sparkles } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { ArrowRight, Download, Terminal, Sparkles } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -10,12 +10,12 @@ const Hero: React.FC = () => {
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
       setMouse({ x, y });
     };
-    window.addEventListener('mousemove', handler);
-    return () => window.removeEventListener('mousemove', handler);
+    window.addEventListener("mousemove", handler);
+    return () => window.removeEventListener("mousemove", handler);
   }, []);
 
   const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
           className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-cyan-500/20 blur-3xl animate-pulse"
           style={{
             transform: `translate(${mouse.x * -30}px, ${mouse.y * -30}px)`,
-            animationDelay: '1s',
+            animationDelay: "1s",
           }}
         />
       </div>
@@ -45,9 +45,10 @@ const Hero: React.FC = () => {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(99,102,241,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.08) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+            "linear-gradient(rgba(99,102,241,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.08) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
         }}
       />
 
@@ -59,15 +60,17 @@ const Hero: React.FC = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
             </span>
-            <span className="text-xs text-cyan-300 font-medium">Available for new projects</span>
+            <span className="text-xs text-cyan-300 font-medium">
+              Available for new projects
+            </span>
           </div>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
-            Building{' '}
+            Building{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
               scalable
-            </span>{' '}
-            digital{' '}
+            </span>{" "}
+            digital{" "}
             <span className="relative inline-block">
               <span className="relative z-10">products</span>
               <span className="absolute inset-x-0 bottom-2 h-3 bg-cyan-400/30 -z-0 blur-sm" />
@@ -75,20 +78,26 @@ const Hero: React.FC = () => {
           </h1>
 
           <h2 className="text-xl md:text-2xl text-gray-400 font-light">
-            Full Stack <span className="text-indigo-400">+</span> DevOps Engineer crafting
+            Full Stack Developer building responsive user experiences and
+            scalable backend systems.
+            {/* Full Stack <span className="text-indigo-400">+</span> DevOps Engineer crafting
             production-grade systems from <span className="text-cyan-400">pixel</span> to{' '}
-            <span className="text-cyan-400">pipeline</span>.
+            <span className="text-cyan-400">pipeline</span>. */}
           </h2>
 
           <p className="text-gray-500 max-w-xl leading-relaxed">
-            I design, build, and ship modern web applications with bullet-proof CI/CD,
+            I develop end-to-end web applications using modern frontend and
+            backend technologies. From intuitive user interfaces to robust APIs
+            and databases, I focus on creating reliable digital products that
+            solve real-world problems.
+            {/* I design, build, and ship modern web applications with bullet-proof CI/CD,
             container orchestration, and cloud-native infrastructure. 5+ years turning ideas
-            into resilient products.
+            into resilient products. */}
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <button
-              onClick={() => scrollTo('#projects')}
+              onClick={() => scrollTo("#projects")}
               className="group relative px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-400 text-white font-semibold overflow-hidden transition-all hover:shadow-2xl hover:shadow-indigo-500/40"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -98,7 +107,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
             </button>
             <button
-              onClick={() => scrollTo('#contact')}
+              onClick={() => scrollTo("#contact")}
               className="px-7 py-3.5 rounded-xl border border-white/15 bg-white/5 backdrop-blur-sm text-white font-semibold hover:bg-white/10 hover:border-white/30 transition-all"
             >
               Contact Me
@@ -113,7 +122,7 @@ const Hero: React.FC = () => {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5">
+          {/* <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5">
             {[
               { num: '50+', label: 'Projects Shipped' },
               { num: '5+', label: 'Years Exp.' },
@@ -128,22 +137,22 @@ const Hero: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Right 3D scene */}
         <div className="relative h-[500px] lg:h-[600px] perspective-1000">
           <div
-            className="absolute inset-0 transition-transform duration-300 ease-out"
+            className="absolute inset-0 transition-transform duration-300 ease-out "
             style={{
               transform: `rotateY(${mouse.x * 8}deg) rotateX(${mouse.y * -8}deg)`,
-              transformStyle: 'preserve-3d',
+              transformStyle: "preserve-3d",
             }}
           >
             {/* Main holographic terminal */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[60%] rounded-2xl bg-gradient-to-br from-indigo-900/50 to-cyan-900/30 backdrop-blur-xl border border-indigo-500/30 shadow-2xl shadow-indigo-500/20 overflow-hidden"
-              style={{ transform: 'translateZ(60px) translate(-50%, -50%)' }}
+              className="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[60%] rounded-2xl bg-gradient-to-br from-indigo-900/50 to-cyan-900/30 backdrop-blur-xl border border-indigo-500/30 shadow-2xl shadow-indigo-500/20 overflow-hidden"
+              style={{ transform: "translateZ(60px) translate(-50%, -50%)" }}
             >
               <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/10 bg-black/30">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -158,30 +167,52 @@ const Hero: React.FC = () => {
                 <div className="text-gray-500">
                   <span className="text-cyan-400">$</span> whoami
                 </div>
-                <div className="text-indigo-300">→ fullstack-devops-engineer</div>
+                {/* <div className="text-indigo-300">→ fullstack-devops-engineer</div> */}
+                <div className="text-indigo-300">→ fullstack-developer</div>
                 <div className="text-gray-500">
                   <span className="text-cyan-400">$</span> cat skills.json
                 </div>
                 <div className="pl-3 space-y-0.5">
                   <div>
-                    <span className="text-purple-400">"frontend"</span>:{' '}
-                    <span className="text-emerald-300">"React, Next.js, TS"</span>,
+                    <span className="text-purple-400">"frontend"</span>:{" "}
+                    <span className="text-emerald-300">
+                      "React, Next.js, TS, Tailwind"
+                    </span>
+                    ,
                   </div>
                   <div>
-                    <span className="text-purple-400">"backend"</span>:{' '}
-                    <span className="text-emerald-300">"Node, Django, Go"</span>,
+                    <span className="text-purple-400">"backend"</span>:{" "}
+                    <span className="text-emerald-300">
+                      "Node.js, Django, Go"
+                    </span>
+                    ,
                   </div>
                   <div>
+                    <span className="text-purple-400">"database"</span>:{" "}
+                    <span className="text-emerald-300">
+                      "PostgreSQL, MySQL, MongoDB"
+                    </span>
+                    ,
+                  </div>
+                  <div>
+                    <span className="text-purple-400">"tools"</span>:{" "}
+                    <span className="text-emerald-300">
+                      "Git,Gitlab, Linux, Docker, Postman, Bruno"
+                    </span>
+                    ,
+                  </div>
+
+                  {/* <div>
                     <span className="text-purple-400">"devops"</span>:{' '}
                     <span className="text-emerald-300">"Docker, K8s, AWS"</span>,
                   </div>
                   <div>
                     <span className="text-purple-400">"ci_cd"</span>:{' '}
                     <span className="text-emerald-300">"GH Actions, Jenkins"</span>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="text-gray-500">
-                  <span className="text-cyan-400">$</span> deploy --prod{' '}
+                  <span className="text-cyan-400">$</span> deploy --prod{" "}
                   <span className="inline-block w-2 h-3 bg-cyan-400 animate-pulse ml-1" />
                 </div>
               </div>
@@ -189,8 +220,8 @@ const Hero: React.FC = () => {
 
             {/* Floating cards */}
             <div
-              className="absolute top-8 right-4 w-44 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-cyan-400/30 shadow-xl shadow-cyan-500/20 animate-float"
-              style={{ transform: 'translateZ(120px)' }}
+              className="absolute top-8 right-4 w-44 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-cyan-400/30 shadow-xl shadow-cyan-500/20 animate-float z-0"
+              style={{ transform: "translateZ(120px)" }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
@@ -207,10 +238,12 @@ const Hero: React.FC = () => {
             </div>
 
             <div
-              className="absolute bottom-8 left-2 w-48 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-indigo-400/30 shadow-xl shadow-indigo-500/20 animate-float-delay"
-              style={{ transform: 'translateZ(100px)' }}
+              className="absolute bottom-0 left-2 w-48 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-indigo-400/30 shadow-xl shadow-indigo-500/20 animate-float-delay z-30"
+              style={{ transform: "translateZ(100px)" }}
             >
-              <div className="text-[10px] text-gray-400 mb-1">Deploys / Week</div>
+              <div className="text-[10px] text-gray-400 mb-1">
+                Deploys / Week
+              </div>
               <div className="text-2xl font-bold text-white">142</div>
               <div className="flex gap-0.5 mt-2 items-end h-6">
                 {[40, 60, 35, 80, 55, 90, 70].map((h, i) => (
@@ -226,11 +259,11 @@ const Hero: React.FC = () => {
             {/* Glowing orbs */}
             <div
               className="absolute top-12 left-12 w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 blur-xl opacity-60 animate-float"
-              style={{ transform: 'translateZ(40px)' }}
+              style={{ transform: "translateZ(40px)" }}
             />
             <div
               className="absolute bottom-20 right-20 w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 blur-2xl opacity-50 animate-float-delay"
-              style={{ transform: 'translateZ(80px)' }}
+              style={{ transform: "translateZ(80px)" }}
             />
           </div>
         </div>
@@ -238,7 +271,9 @@ const Hero: React.FC = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-        <div className="text-xs text-gray-500 uppercase tracking-widest">Scroll</div>
+        <div className="text-xs text-gray-500 uppercase tracking-widest">
+          Scroll
+        </div>
         <div className="w-6 h-10 rounded-full border-2 border-gray-600 flex justify-center pt-2">
           <div className="w-1 h-2 rounded-full bg-cyan-400" />
         </div>
