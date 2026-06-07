@@ -1,53 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface Skill {
   name: string;
   level: number;
-  cat: 'frontend' | 'backend' | 'devops' | 'tools';
+  cat: "frontend" | "backend" | "devops" | "tools";
   color: string;
 }
 
 const skills: Skill[] = [
-  { name: 'React', level: 95, cat: 'frontend', color: '#61DAFB' },
-  { name: 'Next.js', level: 92, cat: 'frontend', color: '#FFFFFF' },
-  { name: 'TypeScript', level: 90, cat: 'frontend', color: '#3178C6' },
-  { name: 'Tailwind', level: 95, cat: 'frontend', color: '#06B6D4' },
-  { name: 'Vue.js', level: 75, cat: 'frontend', color: '#42B883' },
-  { name: 'Three.js', level: 70, cat: 'frontend', color: '#A855F7' },
+  { name: "React", level: 95, cat: "frontend", color: "#61DAFB" },
+  { name: "Next.js", level: 92, cat: "frontend", color: "#FFFFFF" },
+  { name: "TypeScript", level: 90, cat: "frontend", color: "#3178C6" },
+  { name: "Tailwind", level: 95, cat: "frontend", color: "#06B6D4" },
+  // { name: 'Vue.js', level: 75, cat: 'frontend', color: '#42B883' },
+  { name: "Three.js", level: 70, cat: "frontend", color: "#A855F7" },
 
-  { name: 'Node.js', level: 92, cat: 'backend', color: '#8CC84B' },
-  { name: 'Django', level: 85, cat: 'backend', color: '#0C4B33' },
-  { name: 'Python', level: 88, cat: 'backend', color: '#3776AB' },
-  { name: 'PostgreSQL', level: 85, cat: 'backend', color: '#336791' },
-  { name: 'MongoDB', level: 80, cat: 'backend', color: '#47A248' },
-  { name: 'GraphQL', level: 78, cat: 'backend', color: '#E10098' },
+  { name: "Node.js", level: 92, cat: "backend", color: "#8CC84B" },
+  { name: "Django", level: 85, cat: "backend", color: "#0C4B33" },
+  { name: "Python", level: 88, cat: "backend", color: "#3776AB" },
+  { name: "PostgreSQL", level: 85, cat: "backend", color: "#336791" },
+  { name: "MongoDB", level: 80, cat: "backend", color: "#47A248" },
+  // { name: "GraphQL", level: 78, cat: "backend", color: "#E10098" },
 
-  { name: 'Docker', level: 92, cat: 'devops', color: '#2496ED' },
-  { name: 'Kubernetes', level: 85, cat: 'devops', color: '#326CE5' },
-  { name: 'AWS', level: 88, cat: 'devops', color: '#FF9900' },
-  { name: 'GitHub Actions', level: 90, cat: 'devops', color: '#2088FF' },
-  { name: 'Nginx', level: 85, cat: 'devops', color: '#009639' },
-  { name: 'Terraform', level: 75, cat: 'devops', color: '#7B42BC' },
+  { name: "Docker", level: 92, cat: "devops", color: "#2496ED" },
+  { name: "Kubernetes", level: 85, cat: "devops", color: "#326CE5" },
+  // { name: "AWS", level: 88, cat: "devops", color: "#FF9900" },
+  { name: "GitHub Actions", level: 90, cat: "devops", color: "#2088FF" },
+  // { name: "Nginx", level: 85, cat: "devops", color: "#009639" },
+  // { name: "Terraform", level: 75, cat: "devops", color: "#7B42BC" },
 
-  { name: 'Git', level: 95, cat: 'tools', color: '#F05032' },
-  { name: 'Linux', level: 90, cat: 'tools', color: '#FCC624' },
-  { name: 'Vim', level: 80, cat: 'tools', color: '#019733' },
-  { name: 'Figma', level: 75, cat: 'tools', color: '#F24E1E' },
+  { name: "Git", level: 95, cat: "tools", color: "#F05032" },
+  { name: "Linux", level: 90, cat: "tools", color: "#FCC624" },
+  // { name: "Vim", level: 80, cat: "tools", color: "#019733" },
+  // { name: "Figma", level: 75, cat: "tools", color: "#F24E1E" },
 ];
 
 const categories = [
-  { id: 'all', label: 'All Skills' },
-  { id: 'frontend', label: 'Frontend' },
-  { id: 'backend', label: 'Backend' },
-  { id: 'devops', label: 'DevOps' },
-  { id: 'tools', label: 'Tools' },
+  { id: "all", label: "All Skills" },
+  { id: "frontend", label: "Frontend" },
+  { id: "backend", label: "Backend" },
+  { id: "devops", label: "DevOps" },
+  { id: "tools", label: "Tools" },
 ] as const;
 
 const Skills: React.FC = () => {
-  const [active, setActive] = useState<string>('all');
+  const [active, setActive] = useState<string>("all");
   const [hovered, setHovered] = useState<string | null>(null);
 
-  const filtered = active === 'all' ? skills : skills.filter((s) => s.cat === active);
+  const filtered =
+    active === "all" ? skills : skills.filter((s) => s.cat === active);
 
   return (
     <section id="skills" className="relative py-28 px-6 overflow-hidden">
@@ -59,13 +60,14 @@ const Skills: React.FC = () => {
             TECH STACK
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Skills &{' '}
+            Skills &{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               Expertise
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A constellation of technologies I use daily to ship reliable, scalable products.
+            A constellation of technologies I use daily to ship reliable,
+            scalable products.
           </p>
         </div>
 
@@ -77,8 +79,8 @@ const Skills: React.FC = () => {
               onClick={() => setActive(c.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium border transition-all ${
                 active === c.id
-                  ? 'bg-gradient-to-r from-indigo-500 to-cyan-400 border-transparent text-white shadow-lg shadow-indigo-500/30'
-                  : 'border-white/10 text-gray-400 hover:text-white hover:border-white/30'
+                  ? "bg-gradient-to-r from-indigo-500 to-cyan-400 border-transparent text-white shadow-lg shadow-indigo-500/30"
+                  : "border-white/10 text-gray-400 hover:text-white hover:border-white/30"
               }`}
             >
               {c.label}
@@ -128,7 +130,7 @@ const Skills: React.FC = () => {
                 <div
                   className="h-full rounded-full transition-all duration-700"
                   style={{
-                    width: hovered === s.name ? `${s.level}%` : '0%',
+                    width: hovered === s.name ? `${s.level}%` : "0%",
                     background: `linear-gradient(90deg, ${s.color}, ${s.color}80)`,
                   }}
                 />
@@ -138,7 +140,7 @@ const Skills: React.FC = () => {
               {hovered === s.name && (
                 <div
                   className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 rounded-lg text-xs font-bold whitespace-nowrap z-10"
-                  style={{ background: s.color, color: '#000' }}
+                  style={{ background: s.color, color: "#000" }}
                 >
                   {s.level}% proficiency
                 </div>
@@ -150,14 +152,32 @@ const Skills: React.FC = () => {
         {/* Skill bars summary */}
         <div className="grid md:grid-cols-2 gap-8 mt-16">
           {[
-            { label: 'Frontend Development', value: 92, color: 'from-indigo-500 to-purple-500' },
-            { label: 'Backend Engineering', value: 88, color: 'from-emerald-500 to-cyan-500' },
-            { label: 'DevOps & Cloud', value: 90, color: 'from-orange-500 to-pink-500' },
-            { label: 'System Design', value: 85, color: 'from-cyan-400 to-blue-500' },
+            {
+              label: "Frontend Development",
+              value: 92,
+              color: "from-indigo-500 to-purple-500",
+            },
+            {
+              label: "Backend Engineering",
+              value: 88,
+              color: "from-emerald-500 to-cyan-500",
+            },
+            {
+              label: "DevOps & Cloud",
+              value: 90,
+              color: "from-orange-500 to-pink-500",
+            },
+            {
+              label: "System Design",
+              value: 85,
+              color: "from-cyan-400 to-blue-500",
+            },
           ].map((b) => (
             <div key={b.label}>
               <div className="flex justify-between mb-2">
-                <span className="text-sm text-gray-300 font-medium">{b.label}</span>
+                <span className="text-sm text-gray-300 font-medium">
+                  {b.label}
+                </span>
                 <span className="text-sm text-white font-bold">{b.value}%</span>
               </div>
               <div className="h-2 rounded-full bg-white/5 overflow-hidden">
