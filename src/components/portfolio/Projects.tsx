@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Github, ExternalLink, X, Server, Cloud, Database } from 'lucide-react';
+import React, { useState } from "react";
+import { Github, ExternalLink, X, Server, Cloud, Database } from "lucide-react";
 
 interface Project {
   id: number;
@@ -7,7 +7,7 @@ interface Project {
   desc: string;
   longDesc: string;
   tech: string[];
-  category: 'web' | 'devops' | 'fullstack';
+  category: "web" | "devops" | "fullstack";
   image: string;
   github: string;
   demo: string;
@@ -15,178 +15,181 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
-    id: 1,
-    title: 'CloudCommerce',
-    desc: 'Multi-tenant e-commerce platform with real-time inventory.',
-    longDesc:
-      'A SaaS e-commerce platform serving 200+ merchants. Built with Next.js, Node.js, and PostgreSQL. Deployed on AWS ECS with auto-scaling, Redis caching, and Stripe payments. Includes admin dashboard, analytics, and multi-region CDN.',
-    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'AWS', 'Docker'],
-    category: 'fullstack',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610582300_1304ed8a.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Users', value: '50K+' },
-      { label: 'Uptime', value: '99.98%' },
-      { label: 'p95 Latency', value: '120ms' },
-    ],
-  },
-  {
-    id: 2,
-    title: 'K8s Deploy Engine',
-    desc: 'GitOps-driven Kubernetes deployment automation.',
-    longDesc:
-      'Internal tool that automates blue-green deployments to Kubernetes clusters using ArgoCD and GitHub Actions. Reduced deploy time from 45 minutes to 4 minutes across 12 microservices.',
-    tech: ['Kubernetes', 'ArgoCD', 'Go', 'Helm', 'Terraform'],
-    category: 'devops',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610623649_35176c4d.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Deploy time', value: '-91%' },
-      { label: 'Services', value: '12' },
-      { label: 'Rollbacks', value: 'Zero' },
-    ],
-  },
-  {
-    id: 3,
-    title: 'Analytics Hub',
-    desc: 'Real-time data dashboard with WebSocket streams.',
-    longDesc:
-      'Real-time analytics platform processing 100K+ events/sec. Built with React, Django, ClickHouse, and Kafka. Features customizable dashboards, alerting, and SQL playground.',
-    tech: ['React', 'Django', 'ClickHouse', 'Kafka', 'Docker'],
-    category: 'fullstack',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610587348_fefc1e88.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Events/sec', value: '100K' },
-      { label: 'Dashboards', value: '500+' },
-      { label: 'Cost saved', value: '40%' },
-    ],
-  },
-  {
-    id: 4,
-    title: 'CI/CD Pipeline Suite',
-    desc: 'Reusable GitHub Actions workflows for any stack.',
-    longDesc:
-      'Open-source collection of composable CI/CD workflows. Supports Node, Python, Go, and Rust with built-in security scanning, container builds, and multi-cloud deployment.',
-    tech: ['GitHub Actions', 'Bash', 'Docker', 'Trivy', 'Cosign'],
-    category: 'devops',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610616446_20757485.jpg',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Stars', value: '2.1K' },
-      { label: 'Forks', value: '340' },
-      { label: 'Adopters', value: '85+' },
-    ],
-  },
-  {
-    id: 5,
-    title: 'DevPortal',
-    desc: 'Developer documentation portal with MDX.',
-    longDesc:
-      'A modern docs platform with versioned content, full-text search, and interactive code playgrounds. Built with Next.js App Router, MDX, and Algolia.',
-    tech: ['Next.js', 'MDX', 'Algolia', 'Tailwind', 'Vercel'],
-    category: 'web',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610582828_3ab5a348.jpg',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Lighthouse', value: '99' },
-      { label: 'Pages', value: '300+' },
-      { label: 'Search', value: '<50ms' },
-    ],
-  },
-  {
-    id: 6,
-    title: 'Observability Stack',
-    desc: 'Self-hosted Prometheus + Grafana + Loki setup.',
-    longDesc:
-      'Production-grade observability stack with metrics, logs, and traces. Includes pre-built dashboards, alerting rules, and IaC for repeatable deployments.',
-    tech: ['Prometheus', 'Grafana', 'Loki', 'Tempo', 'Helm'],
-    category: 'devops',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610617336_3ac73fec.jpg',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Metrics', value: '5M/min' },
-      { label: 'Retention', value: '90d' },
-      { label: 'Cost', value: '$0' },
-    ],
-  },
-  {
-    id: 7,
-    title: 'TaskFlow',
-    desc: 'Collaborative project management with realtime sync.',
-    longDesc:
-      'Notion-inspired task tracker with rich text editing, kanban boards, and live cursors. Built with React, tRPC, Prisma, and PartyKit.',
-    tech: ['React', 'tRPC', 'Prisma', 'PartyKit', 'Postgres'],
-    category: 'fullstack',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610586227_1258fba3.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Teams', value: '300+' },
-      { label: 'Sync', value: '<100ms' },
-      { label: 'NPS', value: '72' },
-    ],
-  },
-  {
-    id: 8,
-    title: 'AI Chat Gateway',
-    desc: 'OpenAI-compatible proxy with rate limiting & analytics.',
-    longDesc:
-      'Reverse proxy in front of multiple LLM providers (OpenAI, Anthropic, Mistral). Adds rate limiting, request logging, fallbacks, and per-user quotas.',
-    tech: ['Go', 'Redis', 'PostgreSQL', 'Docker', 'Nginx'],
-    category: 'devops',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610596961_a8d4ae9c.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Throughput', value: '10K rps' },
-      { label: 'Providers', value: '6' },
-      { label: 'Saved', value: '$12K/mo' },
-    ],
-  },
-  {
-    id: 9,
-    title: 'Portfolio 3D',
-    desc: 'This very portfolio site with WebGL hero.',
-    longDesc:
-      'Personal portfolio built with Vite, React, TypeScript, and Tailwind. Features 3D parallax effects, smooth animations, and a perfect Lighthouse score.',
-    tech: ['React', 'Vite', 'TypeScript', 'Tailwind', 'CSS 3D'],
-    category: 'web',
-    image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610558764_afaeb6e3.png',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    metrics: [
-      { label: 'Lighthouse', value: '98' },
-      { label: 'Bundle', value: '120KB' },
-      { label: 'CLS', value: '0.01' },
-    ],
-  },
+  // {
+  //   id: 1,
+  //   title: 'CloudCommerce',
+  //   desc: 'Multi-tenant e-commerce platform with real-time inventory.',
+  //   longDesc:
+  //     'A SaaS e-commerce platform serving 200+ merchants. Built with Next.js, Node.js, and PostgreSQL. Deployed on AWS ECS with auto-scaling, Redis caching, and Stripe payments. Includes admin dashboard, analytics, and multi-region CDN.',
+  //   tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis', 'AWS', 'Docker'],
+  //   category: 'fullstack',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610582300_1304ed8a.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Users', value: '50K+' },
+  //     { label: 'Uptime', value: '99.98%' },
+  //     { label: 'p95 Latency', value: '120ms' },
+  //   ],
+  // },
+  // {
+  //   id: 2,
+  //   title: 'K8s Deploy Engine',
+  //   desc: 'GitOps-driven Kubernetes deployment automation.',
+  //   longDesc:
+  //     'Internal tool that automates blue-green deployments to Kubernetes clusters using ArgoCD and GitHub Actions. Reduced deploy time from 45 minutes to 4 minutes across 12 microservices.',
+  //   tech: ['Kubernetes', 'ArgoCD', 'Go', 'Helm', 'Terraform'],
+  //   category: 'devops',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610623649_35176c4d.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Deploy time', value: '-91%' },
+  //     { label: 'Services', value: '12' },
+  //     { label: 'Rollbacks', value: 'Zero' },
+  //   ],
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Analytics Hub',
+  //   desc: 'Real-time data dashboard with WebSocket streams.',
+  //   longDesc:
+  //     'Real-time analytics platform processing 100K+ events/sec. Built with React, Django, ClickHouse, and Kafka. Features customizable dashboards, alerting, and SQL playground.',
+  //   tech: ['React', 'Django', 'ClickHouse', 'Kafka', 'Docker'],
+  //   category: 'fullstack',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610587348_fefc1e88.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Events/sec', value: '100K' },
+  //     { label: 'Dashboards', value: '500+' },
+  //     { label: 'Cost saved', value: '40%' },
+  //   ],
+  // },
+  // {
+  //   id: 4,
+  //   title: 'CI/CD Pipeline Suite',
+  //   desc: 'Reusable GitHub Actions workflows for any stack.',
+  //   longDesc:
+  //     'Open-source collection of composable CI/CD workflows. Supports Node, Python, Go, and Rust with built-in security scanning, container builds, and multi-cloud deployment.',
+  //   tech: ['GitHub Actions', 'Bash', 'Docker', 'Trivy', 'Cosign'],
+  //   category: 'devops',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610616446_20757485.jpg',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Stars', value: '2.1K' },
+  //     { label: 'Forks', value: '340' },
+  //     { label: 'Adopters', value: '85+' },
+  //   ],
+  // },
+  // {
+  //   id: 5,
+  //   title: 'DevPortal',
+  //   desc: 'Developer documentation portal with MDX.',
+  //   longDesc:
+  //     'A modern docs platform with versioned content, full-text search, and interactive code playgrounds. Built with Next.js App Router, MDX, and Algolia.',
+  //   tech: ['Next.js', 'MDX', 'Algolia', 'Tailwind', 'Vercel'],
+  //   category: 'web',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610582828_3ab5a348.jpg',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Lighthouse', value: '99' },
+  //     { label: 'Pages', value: '300+' },
+  //     { label: 'Search', value: '<50ms' },
+  //   ],
+  // },
+  // {
+  //   id: 6,
+  //   title: 'Observability Stack',
+  //   desc: 'Self-hosted Prometheus + Grafana + Loki setup.',
+  //   longDesc:
+  //     'Production-grade observability stack with metrics, logs, and traces. Includes pre-built dashboards, alerting rules, and IaC for repeatable deployments.',
+  //   tech: ['Prometheus', 'Grafana', 'Loki', 'Tempo', 'Helm'],
+  //   category: 'devops',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610617336_3ac73fec.jpg',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Metrics', value: '5M/min' },
+  //     { label: 'Retention', value: '90d' },
+  //     { label: 'Cost', value: '$0' },
+  //   ],
+  // },
+  // {
+  //   id: 7,
+  //   title: 'TaskFlow',
+  //   desc: 'Collaborative project management with realtime sync.',
+  //   longDesc:
+  //     'Notion-inspired task tracker with rich text editing, kanban boards, and live cursors. Built with React, tRPC, Prisma, and PartyKit.',
+  //   tech: ['React', 'tRPC', 'Prisma', 'PartyKit', 'Postgres'],
+  //   category: 'fullstack',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610586227_1258fba3.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Teams', value: '300+' },
+  //     { label: 'Sync', value: '<100ms' },
+  //     { label: 'NPS', value: '72' },
+  //   ],
+  // },
+  // {
+  //   id: 8,
+  //   title: 'AI Chat Gateway',
+  //   desc: 'OpenAI-compatible proxy with rate limiting & analytics.',
+  //   longDesc:
+  //     'Reverse proxy in front of multiple LLM providers (OpenAI, Anthropic, Mistral). Adds rate limiting, request logging, fallbacks, and per-user quotas.',
+  //   tech: ['Go', 'Redis', 'PostgreSQL', 'Docker', 'Nginx'],
+  //   category: 'devops',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610596961_a8d4ae9c.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Throughput', value: '10K rps' },
+  //     { label: 'Providers', value: '6' },
+  //     { label: 'Saved', value: '$12K/mo' },
+  //   ],
+  // },
+  // {
+  //   id: 9,
+  //   title: 'Portfolio 3D',
+  //   desc: 'This very portfolio site with WebGL hero.',
+  //   longDesc:
+  //     'Personal portfolio built with Vite, React, TypeScript, and Tailwind. Features 3D parallax effects, smooth animations, and a perfect Lighthouse score.',
+  //   tech: ['React', 'Vite', 'TypeScript', 'Tailwind', 'CSS 3D'],
+  //   category: 'web',
+  //   image: 'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777610558764_afaeb6e3.png',
+  //   github: 'https://github.com',
+  //   demo: 'https://example.com',
+  //   metrics: [
+  //     { label: 'Lighthouse', value: '98' },
+  //     { label: 'Bundle', value: '120KB' },
+  //     { label: 'CLS', value: '0.01' },
+  //   ],
+  // },
 ];
 
 const filters = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'fullstack', label: 'Full Stack' },
-  { id: 'devops', label: 'DevOps' },
-  { id: 'web', label: 'Web' },
+  { id: "all", label: "All Projects" },
+  { id: "fullstack", label: "Full Stack" },
+  { id: "devops", label: "DevOps" },
+  { id: "web", label: "Web" },
 ] as const;
 
 const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<string>('all');
+  const [filter, setFilter] = useState<string>("all");
   const [selected, setSelected] = useState<Project | null>(null);
-  const [tilt, setTilt] = useState<{ id: number | null; x: number; y: number }>({
-    id: null,
-    x: 0,
-    y: 0,
-  });
+  const [tilt, setTilt] = useState<{ id: number | null; x: number; y: number }>(
+    {
+      id: null,
+      x: 0,
+      y: 0,
+    },
+  );
 
-  const list = filter === 'all' ? projects : projects.filter((p) => p.category === filter);
+  const list =
+    filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -203,13 +206,14 @@ const Projects: React.FC = () => {
             FEATURED WORK
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Projects &{' '}
+            Projects &{" "}
             <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Case Studies
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A selection of products, platforms and tools I've built and deployed.
+            A selection of products, platforms and tools I've built and
+            deployed.
           </p>
         </div>
 
@@ -220,8 +224,8 @@ const Projects: React.FC = () => {
               onClick={() => setFilter(f.id)}
               className={`px-5 py-2 rounded-full text-sm font-medium border transition-all ${
                 filter === f.id
-                  ? 'bg-gradient-to-r from-indigo-500 to-cyan-400 border-transparent text-white'
-                  : 'border-white/10 text-gray-400 hover:text-white hover:border-white/30'
+                  ? "bg-gradient-to-r from-indigo-500 to-cyan-400 border-transparent text-white"
+                  : "border-white/10 text-gray-400 hover:text-white hover:border-white/30"
               }`}
             >
               {f.label}
@@ -242,8 +246,8 @@ const Projects: React.FC = () => {
                 style={{
                   transform: isHovered
                     ? `perspective(1000px) rotateY(${tilt.x * 6}deg) rotateX(${tilt.y * -6}deg) translateZ(10px)`
-                    : 'perspective(1000px) rotateY(0) rotateX(0)',
-                  transformStyle: 'preserve-3d',
+                    : "perspective(1000px) rotateY(0) rotateX(0)",
+                  transformStyle: "preserve-3d",
                 }}
               >
                 <div className="relative aspect-video overflow-hidden">
@@ -263,7 +267,9 @@ const Projects: React.FC = () => {
                   <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-4 line-clamp-2">{p.desc}</p>
+                  <p className="text-sm text-gray-400 mb-4 line-clamp-2">
+                    {p.desc}
+                  </p>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {p.tech.slice(0, 4).map((t) => (
                       <span
@@ -328,7 +334,11 @@ const Projects: React.FC = () => {
               <X className="w-5 h-5" />
             </button>
             <div className="relative aspect-video">
-              <img src={selected.image} alt={selected.title} className="w-full h-full object-cover" />
+              <img
+                src={selected.image}
+                alt={selected.title}
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent" />
             </div>
             <div className="p-8">
@@ -337,8 +347,12 @@ const Projects: React.FC = () => {
                   {selected.category}
                 </span>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-3">{selected.title}</h2>
-              <p className="text-gray-400 leading-relaxed mb-6">{selected.longDesc}</p>
+              <h2 className="text-3xl font-bold text-white mb-3">
+                {selected.title}
+              </h2>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                {selected.longDesc}
+              </p>
 
               <div className="grid grid-cols-3 gap-4 mb-6">
                 {selected.metrics.map((m) => (
@@ -376,9 +390,17 @@ const Projects: React.FC = () => {
                 </h3>
                 <div className="flex items-center justify-between gap-2 text-xs">
                   {[
-                    { icon: Server, label: 'Frontend', color: 'text-indigo-400' },
-                    { icon: Database, label: 'API + DB', color: 'text-emerald-400' },
-                    { icon: Cloud, label: 'Cloud', color: 'text-cyan-400' },
+                    {
+                      icon: Server,
+                      label: "Frontend",
+                      color: "text-indigo-400",
+                    },
+                    {
+                      icon: Database,
+                      label: "API + DB",
+                      color: "text-emerald-400",
+                    },
+                    { icon: Cloud, label: "Cloud", color: "text-cyan-400" },
                   ].map((s, i) => (
                     <React.Fragment key={i}>
                       <div className="flex flex-col items-center gap-2 flex-1">
