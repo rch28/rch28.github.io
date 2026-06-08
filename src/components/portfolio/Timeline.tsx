@@ -1,72 +1,83 @@
-import React, { useState } from 'react';
-import { Briefcase, GraduationCap, Award, Plus } from 'lucide-react';
+import React, { useState } from "react";
+import { Briefcase, GraduationCap, Award, Plus } from "lucide-react";
 
 const items = [
+  // {
+  //   year: "2024 – Present",
+  //   title: "Senior Full Stack + DevOps Engineer",
+  //   org: "CloudScale Inc.",
+  //   type: "work" as const,
+  //   desc: "Leading a team of 6 engineers to architect and ship a multi-tenant SaaS platform serving 50K+ users.",
+  //   achievements: [
+  //     "Migrated monolith to 12 microservices on Kubernetes",
+  //     "Reduced AWS costs by 38% via spot instances + autoscaling",
+  //     "Implemented zero-downtime deploys with ArgoCD",
+  //   ],
+  //   tech: ["React", "Node.js", "K8s", "AWS", "Terraform"],
+  // },
+  // {
+  //   year: "2022 – 2024",
+  //   title: "Full Stack Engineer",
+  //   org: "Stripe Labs (contract)",
+  //   type: "work" as const,
+  //   desc: "Built internal developer platforms and CI/CD tooling for the payments infrastructure team.",
+  //   achievements: [
+  //     "Designed reusable GitHub Actions workflow library",
+  //     "Cut average deploy time from 22min to 4min",
+  //     "Authored 14 internal RFCs adopted org-wide",
+  //   ],
+  //   tech: ["Go", "TypeScript", "Docker", "GitHub Actions"],
+  // },
+  // {
+  //   year: "2021",
+  //   title: "AWS Certified Solutions Architect",
+  //   org: "Amazon Web Services",
+  //   type: "cert" as const,
+  //   desc: "Achieved Professional-level certification covering distributed systems, security, and cost optimization.",
+  //   achievements: ["Top 5% score globally"],
+  //   tech: ["AWS", "IAM", "VPC", "EKS"],
+  // },
   {
-    year: '2024 – Present',
-    title: 'Senior Full Stack + DevOps Engineer',
-    org: 'CloudScale Inc.',
-    type: 'work' as const,
-    desc: 'Leading a team of 6 engineers to architect and ship a multi-tenant SaaS platform serving 50K+ users.',
+    year: "2025 – Present",
+    title: "Frontend Developer",
+    org: "Nagarik Solution Pvt. Ltd.",
+    type: "work" as const,
+    desc: "Working on scalable frontend systems and improving UI/UX for logistics workflows.",
     achievements: [
-      'Migrated monolith to 12 microservices on Kubernetes',
-      'Reduced AWS costs by 38% via spot instances + autoscaling',
-      'Implemented zero-downtime deploys with ArgoCD',
+      "Built reusable component library used across 15+ internal projects",
+      "Mentored junior developers",
+      "Improved CI/CD workflow, reducing frontend bugs by 60%",
     ],
-    tech: ['React', 'Node.js', 'K8s', 'AWS', 'Terraform'],
+    tech: ["React", "TypeScript", "Redux", "Tailwind CSS", "Gitlab"],
   },
   {
-    year: '2022 – 2024',
-    title: 'Full Stack Engineer',
-    org: 'Stripe Labs (contract)',
-    type: 'work' as const,
-    desc: 'Built internal developer platforms and CI/CD tooling for the payments infrastructure team.',
-    achievements: [
-      'Designed reusable GitHub Actions workflow library',
-      'Cut average deploy time from 22min to 4min',
-      'Authored 14 internal RFCs adopted org-wide',
+    year: "Oct 2024 – 2025",
+    title: "Frontend Developer Intern",
+    org: "Nagarik Solution Pvt. Ltd.",
+    type: "work" as const,
+    desc: "Worked on building and improving frontend features for an internal logistics platform using React.",
+    achievements: ["Converted to full-time at end of internship"],
+    tech: [
+      "React",
+      "JavaScript",
+      "REST APIs",
+      "Redux/Toolkit",
+      "Tailwind CSS",
+      "Gitlab",
     ],
-    tech: ['Go', 'TypeScript', 'Docker', 'GitHub Actions'],
   },
   {
-    year: '2021',
-    title: 'AWS Certified Solutions Architect',
-    org: 'Amazon Web Services',
-    type: 'cert' as const,
-    desc: 'Achieved Professional-level certification covering distributed systems, security, and cost optimization.',
-    achievements: ['Top 5% score globally'],
-    tech: ['AWS', 'IAM', 'VPC', 'EKS'],
-  },
-  {
-    year: '2020 – 2022',
-    title: 'Full Stack Developer',
-    org: 'Bright Studios',
-    type: 'work' as const,
-    desc: 'Shipped 20+ client projects from e-commerce to fintech dashboards. Owned full delivery lifecycle.',
-    achievements: [
-      'Built reusable component library used across 15 projects',
-      'Mentored 4 junior developers',
-      'Introduced CI/CD reducing bugs by 60%',
+    year: "2020 – 2025",
+    title: "B.Sc. CSIT",
+    org: "Lumbini ICT Campus (Tribhuvan University)",
+    type: "edu" as const,
+    desc: "Completed the 8-semester B.Sc. CSIT program with a focus on software engineering, distributed systems, and computer science fundamentals.",
+    achievements: ["81.55% Aggregate", "Completed 8 Semesters"],
+    tech: [
+      "Data Structures & Algorithms",
+      "Database Systems",
+      "Software Engineering",
     ],
-    tech: ['React', 'Next.js', 'Django', 'Postgres'],
-  },
-  {
-    year: '2019',
-    title: 'Software Engineering Internship',
-    org: 'TechVerse',
-    type: 'work' as const,
-    desc: 'Built REST APIs and admin dashboards for an internal logistics platform.',
-    achievements: ['Converted to full-time at end of internship'],
-    tech: ['Node.js', 'Vue.js', 'MongoDB'],
-  },
-  {
-    year: '2017 – 2021',
-    title: 'B.Sc. Computer Science',
-    org: 'University of Technology',
-    type: 'edu' as const,
-    desc: 'Specialized in distributed systems and software engineering. Graduated with honors.',
-    achievements: ['GPA 3.85 / 4.0', "Dean's List 4 semesters"],
-    tech: ['Algorithms', 'Distributed Systems', 'OS'],
   },
 ];
 
@@ -87,7 +98,7 @@ const Timeline: React.FC = () => {
             JOURNEY
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Experience &{' '}
+            Experience &{" "}
             <span className="bg-gradient-to-r from-pink-400 to-indigo-400 bg-clip-text text-transparent">
               Milestones
             </span>
@@ -110,7 +121,7 @@ const Timeline: React.FC = () => {
                 <div
                   key={i}
                   className={`relative flex flex-col md:flex-row gap-6 ${
-                    isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >
                   {/* Dot */}
@@ -146,12 +157,16 @@ const Timeline: React.FC = () => {
                         </div>
                         <Plus
                           className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${
-                            isOpen ? 'rotate-45' : ''
+                            isOpen ? "rotate-45" : ""
                           }`}
                         />
                       </div>
-                      <div className="text-sm text-indigo-300 font-medium mb-2">{item.org}</div>
-                      <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
+                      <div className="text-sm text-indigo-300 font-medium mb-2">
+                        {item.org}
+                      </div>
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {item.desc}
+                      </p>
 
                       {isOpen && (
                         <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
@@ -161,8 +176,13 @@ const Timeline: React.FC = () => {
                             </div>
                             <ul className="space-y-1.5">
                               {item.achievements.map((a, ai) => (
-                                <li key={ai} className="flex gap-2 text-sm text-gray-300">
-                                  <span className="text-cyan-400 mt-0.5">▸</span>
+                                <li
+                                  key={ai}
+                                  className="flex gap-2 text-sm text-gray-300"
+                                >
+                                  <span className="text-cyan-400 mt-0.5">
+                                    ▸
+                                  </span>
                                   <span>{a}</span>
                                 </li>
                               ))}
