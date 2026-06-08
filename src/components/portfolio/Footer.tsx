@@ -1,62 +1,64 @@
-import React, { useState } from 'react';
-import { Code2, Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
+import React, { useState } from "react";
+import { Code2, Github, Linkedin, Twitter, Mail, ArrowUp } from "lucide-react";
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
     try {
-      await fetch('https://famous.ai/api/crm/69f42ec4345e093cafb5d5ce/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          source: 'footer-signup',
-          tags: ['newsletter', 'portfolio'],
-        }),
-      });
+      await fetch(
+        "https://famous.ai/api/crm/69f42ec4345e093cafb5d5ce/subscribe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            source: "footer-signup",
+            tags: ["newsletter", "portfolio"],
+          }),
+        },
+      );
       setSubscribed(true);
-      setEmail('');
+      setEmail("");
       setTimeout(() => setSubscribed(false), 4000);
     } catch {}
   };
 
   const cols = [
     {
-      title: 'Navigate',
+      title: "Navigate",
       links: [
-        { label: 'About', href: '#about' },
-        { label: 'Skills', href: '#skills' },
-        { label: 'Projects', href: '#projects' },
-        { label: 'Experience', href: '#experience' },
+        { label: "About", href: "#about" },
+        { label: "Skills", href: "#skills" },
+        { label: "Projects", href: "#projects" },
+        { label: "Experience", href: "#experience" },
       ],
     },
     {
-      title: 'Resources',
+      title: "Resources",
       links: [
-        { label: 'Blog', href: '#blog' },
+        { label: "Blog", href: "#blog" },
 
-        { label: 'Resume / CV', href: '#' },
-        { label: 'Speaking', href: '#' },
-        { label: 'Open Source', href: '#' },
+        { label: "Resume / CV", href: "#" },
+        { label: "Speaking", href: "#" },
+        { label: "Open Source", href: "#" },
       ],
     },
-    {
-      title: 'Services',
-      links: [
-        { label: 'Web Development', href: '#' },
-        { label: 'DevOps Consulting', href: '#' },
-        { label: 'Cloud Architecture', href: '#' },
-        { label: 'Code Audits', href: '#' },
-      ],
-    },
+    // {
+    //   title: "Services",
+    //   links: [
+    //     { label: "Web Development", href: "#" },
+    //     { label: "DevOps Consulting", href: "#" },
+    //     { label: "Cloud Architecture", href: "#" },
+    //     { label: "Code Audits", href: "#" },
+    //   ],
+    // },
   ];
 
-  const scrollTop = () =>
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <footer className="relative border-t border-white/10 bg-[#070A12]">
@@ -68,12 +70,12 @@ const Footer: React.FC = () => {
                 <Code2 className="w-5 h-5 text-white" />
               </div>
               <span className="text-white font-bold text-lg">
-                dev<span className="text-cyan-400">.</span>stack
+                khim<span className="text-cyan-400">.</span>chhetri
               </span>
             </div>
             <p className="text-sm text-gray-400 max-w-md leading-relaxed">
-              Full Stack + DevOps engineer building scalable web products. From pixels in the
-              browser to pods in the cluster.
+              Full Stack + DevOps engineer building scalable web products. From
+              pixels in the browser to pods in the cluster.
             </p>
 
             <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
@@ -88,16 +90,16 @@ const Footer: React.FC = () => {
                 type="submit"
                 className="px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-400 text-white font-semibold text-sm hover:shadow-lg hover:shadow-indigo-500/30 transition-all"
               >
-                {subscribed ? 'Subscribed!' : 'Subscribe'}
+                {subscribed ? "Subscribed!" : "Subscribe"}
               </button>
             </form>
 
             <div className="flex gap-2 pt-2">
               {[
-                { Icon: Github, href: 'https://github.com' },
-                { Icon: Linkedin, href: 'https://linkedin.com' },
-                { Icon: Twitter, href: 'https://twitter.com' },
-                { Icon: Mail, href: 'mailto:hello@example.com' },
+                { Icon: Github, href: "https://github.com" },
+                { Icon: Linkedin, href: "https://linkedin.com" },
+                { Icon: Twitter, href: "https://twitter.com" },
+                { Icon: Mail, href: "mailto:hello@example.com" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -145,7 +147,8 @@ const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-white/5 flex items-center justify-between flex-wrap gap-4">
           <div className="text-xs text-gray-500">
-            © {new Date().getFullYear()} dev.stack — Built with React, Vite & ❤
+            © {new Date().getFullYear()} khim.chhetri — Built with React, Vite &
+            ❤
           </div>
           <div className="flex gap-5 text-xs text-gray-500">
             <a href="#" className="hover:text-cyan-300">

@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Twitter, Send, MapPin, Loader2, Check } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  Twitter,
+  Send,
+  MapPin,
+  Loader2,
+  Check,
+} from "lucide-react";
 
 const Contact: React.FC = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = 'Name is required';
-    if (!form.email.trim()) e.email = 'Email is required';
-    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = 'Invalid email';
-    if (!form.message.trim()) e.message = 'Message is required';
-    else if (form.message.length < 10) e.message = 'At least 10 characters';
+    if (!form.name.trim()) e.name = "Name is required";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email))
+      e.email = "Invalid email";
+    if (!form.message.trim()) e.message = "Message is required";
+    else if (form.message.length < 10) e.message = "At least 10 characters";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -20,34 +32,57 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setStatus('loading');
+    setStatus("loading");
 
     try {
-      await fetch('https://famous.ai/api/crm/69f42ec4345e093cafb5d5ce/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email,
-          name: form.name,
-          source: 'contact-form',
-          tags: ['portfolio', 'contact'],
-          notes: form.message,
-        }),
-      });
-      setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
+      await fetch(
+        "https://famous.ai/api/crm/69f42ec4345e093cafb5d5ce/subscribe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: form.email,
+            name: form.name,
+            source: "contact-form",
+            tags: ["portfolio", "contact"],
+            notes: form.message,
+          }),
+        },
+      );
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 4000);
     } catch {
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 4000);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
     }
   };
 
   const socials = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com', color: 'hover:text-white' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com', color: 'hover:text-blue-400' },
-    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com', color: 'hover:text-cyan-400' },
-    { icon: Mail, label: 'Email', href: 'mailto:hello@example.com', color: 'hover:text-pink-400' },
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com",
+      color: "hover:text-white",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://linkedin.com",
+      color: "hover:text-blue-400",
+    },
+    {
+      icon: Twitter,
+      label: "Twitter",
+      href: "https://twitter.com",
+      color: "hover:text-cyan-400",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      href: "mailto:hello@example.com",
+      color: "hover:text-pink-400",
+    },
   ];
 
   return (
@@ -60,13 +95,14 @@ const Contact: React.FC = () => {
             GET IN TOUCH
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's build{' '}
+            Let's build{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               something great
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind, looking for a senior engineer, or just want to say hi?
+            Have a project in mind, looking for a senior engineer, or just want
+            to say hi?
           </p>
         </div>
 
@@ -79,8 +115,12 @@ const Contact: React.FC = () => {
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Email</div>
-                  <div className="text-white font-semibold">hello@devstack.io</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wider">
+                    Email
+                  </div>
+                  <div className="text-white font-semibold">
+                    khim.b.chhetri@gmail.com
+                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -88,8 +128,12 @@ const Contact: React.FC = () => {
                   <MapPin className="w-5 h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">Location</div>
-                  <div className="text-white font-semibold">Remote / Worldwide</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wider">
+                    Location
+                  </div>
+                  <div className="text-white font-semibold">
+                    Remote / Worldwide
+                  </div>
                 </div>
               </div>
             </div>
@@ -123,10 +167,13 @@ const Contact: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                 </div>
-                <span className="text-sm text-emerald-300 font-medium">Available now</span>
+                <span className="text-sm text-emerald-300 font-medium">
+                  Available now
+                </span>
               </div>
               <p className="text-xs text-gray-500">
-                Currently accepting new contracts and full-time roles. Typical reply within 24h.
+                Currently accepting new contracts and full-time roles. Typical
+                reply within 24h.
               </p>
             </div>
           </div>
@@ -147,10 +194,12 @@ const Contact: React.FC = () => {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your name"
                   className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
-                    errors.name ? 'border-red-500/50' : 'border-white/10'
+                    errors.name ? "border-red-500/50" : "border-white/10"
                   } text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all`}
                 />
-                {errors.name && <p className="text-xs text-red-400 mt-1">{errors.name}</p>}
+                {errors.name && (
+                  <p className="text-xs text-red-400 mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -163,10 +212,12 @@ const Contact: React.FC = () => {
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="you@email.com"
                   className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
-                    errors.email ? 'border-red-500/50' : 'border-white/10'
+                    errors.email ? "border-red-500/50" : "border-white/10"
                   } text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all`}
                 />
-                {errors.email && <p className="text-xs text-red-400 mt-1">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-xs text-red-400 mt-1">{errors.email}</p>
+                )}
               </div>
             </div>
 
@@ -180,10 +231,12 @@ const Contact: React.FC = () => {
                 rows={6}
                 placeholder="Tell me about your project, timeline, and budget..."
                 className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${
-                  errors.message ? 'border-red-500/50' : 'border-white/10'
+                  errors.message ? "border-red-500/50" : "border-white/10"
                 } text-white placeholder:text-gray-600 focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all resize-none`}
               />
-              {errors.message && <p className="text-xs text-red-400 mt-1">{errors.message}</p>}
+              {errors.message && (
+                <p className="text-xs text-red-400 mt-1">{errors.message}</p>
+              )}
             </div>
 
             <div className="flex items-center justify-between flex-wrap gap-3">
@@ -192,23 +245,27 @@ const Contact: React.FC = () => {
               </p>
               <button
                 type="submit"
-                disabled={status === 'loading'}
+                disabled={status === "loading"}
                 className="px-7 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-cyan-400 text-white font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-500/30 disabled:opacity-50 transition-all"
               >
-                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin" />}
-                {status === 'success' && <Check className="w-4 h-4" />}
-                {(status === 'idle' || status === 'error') && <Send className="w-4 h-4" />}
-                {status === 'loading'
-                  ? 'Sending...'
-                  : status === 'success'
-                  ? 'Message Sent!'
-                  : status === 'error'
-                  ? 'Try again'
-                  : 'Send Message'}
+                {status === "loading" && (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                )}
+                {status === "success" && <Check className="w-4 h-4" />}
+                {(status === "idle" || status === "error") && (
+                  <Send className="w-4 h-4" />
+                )}
+                {status === "loading"
+                  ? "Sending..."
+                  : status === "success"
+                    ? "Message Sent!"
+                    : status === "error"
+                      ? "Try again"
+                      : "Send Message"}
               </button>
             </div>
 
-            {status === 'success' && (
+            {status === "success" && (
               <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-300">
                 Thanks for reaching out! I'll be in touch shortly.
               </div>
