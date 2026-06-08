@@ -1,6 +1,6 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Calendar, Clock, X, ArrowLeft, Tag } from 'lucide-react';
-import { marked } from 'marked';
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import { Calendar, Clock, X, ArrowLeft, Tag } from "lucide-react";
+import { marked } from "marked";
 
 interface Post {
   id: number;
@@ -312,120 +312,127 @@ Because in some companies, **it does**. OpenAPI specs > hand-written prose.
 `.trim();
 
 const posts: Post[] = [
-  {
-    id: 1,
-    title: 'Zero-Downtime Deployments on Kubernetes with ArgoCD',
-    excerpt:
-      'A deep dive into GitOps workflows, blue-green strategies, and how we cut deploy time from 22 minutes to 4.',
-    cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611014900_46913c55.jpg',
-    date: 'Apr 22, 2026',
-    readTime: 9,
-    topics: ['DevOps', 'AWS'],
-    author: 'dev.stack',
-    content: POST_1,
-  },
+  // {
+  //   id: 1,
+  //   title: 'Zero-Downtime Deployments on Kubernetes with ArgoCD',
+  //   excerpt:
+  //     'A deep dive into GitOps workflows, blue-green strategies, and how we cut deploy time from 22 minutes to 4.',
+  //   cover:
+  //     'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611014900_46913c55.jpg',
+  //   date: 'Apr 22, 2026',
+  //   readTime: 9,
+  //   topics: ['DevOps', 'AWS'],
+  //   author: 'khim.chhetri',
+  //   content: POST_1,
+  // },
   {
     id: 2,
-    title: 'Server Components in Next.js 15: A Practical Migration Guide',
+    title: "Server Components in Next.js 15: A Practical Migration Guide",
     excerpt:
-      'Refactoring a real-world dashboard from the Pages Router to the App Router with React Server Components.',
+      "Refactoring a real-world dashboard from the Pages Router to the App Router with React Server Components.",
     cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611076287_88eebe14.jpg',
-    date: 'Apr 14, 2026',
+      "https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611076287_88eebe14.jpg",
+    date: "Apr 14, 2026",
     readTime: 12,
-    topics: ['React', 'Tutorials'],
-    author: 'dev.stack',
+    topics: ["React", "Tutorials"],
+    author: "khim.chhetri",
     content: POST_2,
   },
-  {
-    id: 3,
-    title: 'Building a Cost-Effective Logging Pipeline on AWS',
-    excerpt:
-      'How we replaced a $4K/month CloudWatch bill with a self-hosted Loki + S3 setup — without sacrificing reliability.',
-    cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611101905_e6946b2a.png',
-    date: 'Apr 02, 2026',
-    readTime: 8,
-    topics: ['AWS', 'DevOps'],
-    author: 'dev.stack',
-    content: POST_3,
-  },
+  // {
+  //   id: 3,
+  //   title: "Building a Cost-Effective Logging Pipeline on AWS",
+  //   excerpt:
+  //     "How we replaced a $4K/month CloudWatch bill with a self-hosted Loki + S3 setup — without sacrificing reliability.",
+  //   cover:
+  //     "https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611101905_e6946b2a.png",
+  //   date: "Apr 02, 2026",
+  //   readTime: 8,
+  //   topics: ["AWS", "DevOps"],
+  //   author: "khim.chhetri",
+  //   content: POST_3,
+  // },
   {
     id: 4,
-    title: 'Type-Safe Forms with React Hook Form + Zod',
+    title: "Type-Safe Forms with React Hook Form + Zod",
     excerpt:
-      'A pattern for end-to-end type safety in forms that scales from 3 fields to 30 — with field-level validation built in.',
+      "A pattern for end-to-end type safety in forms that scales from 3 fields to 30 — with field-level validation built in.",
     cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611058503_5c92e519.png',
-    date: 'Mar 25, 2026',
+      "https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611058503_5c92e519.png",
+    date: "Mar 25, 2026",
     readTime: 6,
-    topics: ['React', 'Tutorials'],
-    author: 'dev.stack',
+    topics: ["React", "Tutorials"],
+    author: "khim.chhetri",
     content: POST_4,
   },
   {
     id: 5,
-    title: 'Docker Image Optimization: From 1.2GB to 80MB',
+    title: "Docker Image Optimization: From 1.2GB to 80MB",
     excerpt:
-      'Multi-stage builds, distroless bases, and the BuildKit tricks we used to shrink our Node.js images by 93%.',
+      "Multi-stage builds, distroless bases, and the BuildKit tricks we used to shrink our Node.js images by 93%.",
     cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611244397_47becc39.png',
-    date: 'Mar 12, 2026',
+      "https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611244397_47becc39.png",
+    date: "Mar 12, 2026",
     readTime: 7,
-    topics: ['DevOps', 'Tutorials'],
-    author: 'dev.stack',
+    topics: ["DevOps", "Tutorials"],
+    author: "khim.chhetri",
     content: POST_5,
   },
   {
     id: 6,
     title: "Designing REST APIs That Don't Suck in 5 Years",
     excerpt:
-      'Versioning, pagination, error envelopes — the boring decisions that compound into elegant or hostile APIs.',
+      "Versioning, pagination, error envelopes — the boring decisions that compound into elegant or hostile APIs.",
     cover:
-      'https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611218285_a3fb1da5.png',
-    date: 'Feb 28, 2026',
+      "https://d64gsuwffb70l.cloudfront.net/69f42ec4345e093cafb5d5ce_1777611218285_a3fb1da5.png",
+    date: "Feb 28, 2026",
     readTime: 11,
-    topics: ['Tutorials'],
-    author: 'dev.stack',
+    topics: ["Tutorials"],
+    author: "khim.chhetri",
     content: POST_6,
   },
 ];
 
-const allTopics = ['All', 'DevOps', 'React', 'AWS', 'Tutorials'] as const;
+const allTopics = ["All", "DevOps", "React", "AWS", "Tutorials"] as const;
 
 const Blog: React.FC = () => {
-  const [filter, setFilter] = useState<string>('All');
+  const [filter, setFilter] = useState<string>("All");
   const [selected, setSelected] = useState<Post | null>(null);
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const filtered = useMemo(() => {
-    if (filter === 'All') return posts;
+    if (filter === "All") return posts;
     return posts.filter((p) => p.topics.includes(filter));
   }, [filter]);
 
+  useEffect(() => {
+    if (selected && modalRef.current) {
+      modalRef.current.scrollTop = 0;
+    }
+  }, [selected]);
   // Lock body scroll when modal open
   useEffect(() => {
     if (selected) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [selected]);
 
   // Close modal on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelected(null);
+      if (e.key === "Escape") setSelected(null);
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const renderedHTML = useMemo(() => {
-    if (!selected) return '';
+    if (!selected) return "";
     return marked.parse(selected.content) as string;
   }, [selected]);
 
@@ -440,14 +447,14 @@ const Blog: React.FC = () => {
             WRITING
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Latest{' '}
+            Latest{" "}
             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
               Articles
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Long-form notes on shipping software, scaling infrastructure, and the messy
-            reality between them.
+            Long-form notes on shipping software, scaling infrastructure, and
+            the messy reality between them.
           </p>
         </div>
 
@@ -461,12 +468,12 @@ const Blog: React.FC = () => {
                 onClick={() => setFilter(t)}
                 className={`px-5 py-2 rounded-full text-sm font-medium border transition-all ${
                   active
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 border-transparent text-white shadow-lg shadow-indigo-500/30'
-                    : 'border-white/10 text-gray-400 hover:text-white hover:border-white/30'
+                    ? "bg-gradient-to-r from-indigo-500 to-purple-500 border-transparent text-white shadow-lg shadow-indigo-500/30"
+                    : "border-white/10 text-gray-400 hover:text-white hover:border-white/30"
                 }`}
               >
                 {t}
-                {active && filter !== 'All' && (
+                {active && filter !== "All" && (
                   <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded-full bg-white/20">
                     {filtered.length}
                   </span>
@@ -490,7 +497,7 @@ const Blog: React.FC = () => {
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     setSelected(p);
                   }
@@ -540,7 +547,7 @@ const Blog: React.FC = () => {
                   <div className="flex items-center justify-between pt-3 border-t border-white/5">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-[10px] font-bold text-white">
-                        DS
+                        KC
                       </div>
                       <span className="text-xs text-gray-400">{p.author}</span>
                     </div>
@@ -558,12 +565,13 @@ const Blog: React.FC = () => {
       {/* Article Modal */}
       {selected && (
         <div
+          // ref={modalRef}
           onClick={() => setSelected(null)}
-          className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-start md:items-center justify-center p-3 md:p-6 overflow-y-auto"
+          className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-6 "
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl my-4 md:my-8 rounded-2xl bg-[#0B0F19] border border-white/10 overflow-hidden"
+            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0B0F19] mt-24 "
           >
             {/* Close button */}
             <button
@@ -573,9 +581,8 @@ const Blog: React.FC = () => {
             >
               <X className="w-5 h-5" />
             </button>
-
             {/* Cover */}
-            <div className="relative aspect-[21/9] overflow-hidden">
+            <div className="relative ">
               <img
                 src={selected.cover}
                 alt={selected.title}
@@ -602,7 +609,9 @@ const Blog: React.FC = () => {
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-xs font-bold text-white">
                       DS
                     </div>
-                    <span className="text-white font-medium">{selected.author}</span>
+                    <span className="text-white font-medium">
+                      {selected.author}
+                    </span>
                   </div>
                   <span className="flex items-center gap-1">
                     <Calendar className="w-3.5 h-3.5" />
@@ -641,8 +650,8 @@ const Blog: React.FC = () => {
                         setSelected(null);
                         setTimeout(() => {
                           document
-                            .getElementById('blog')
-                            ?.scrollIntoView({ behavior: 'smooth' });
+                            .getElementById("blog")
+                            ?.scrollIntoView({ behavior: "smooth" });
                         }, 50);
                       }}
                       className="px-3 py-1 rounded-md text-xs font-medium bg-white/5 border border-white/10 text-gray-300 hover:border-cyan-500/40 hover:text-white transition-colors"
