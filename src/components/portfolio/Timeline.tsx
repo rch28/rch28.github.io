@@ -67,7 +67,7 @@ const items = [
     ],
   },
   {
-    year: "2020 – 2025",
+    year: "2021 – 2025",
     title: "B.Sc. CSIT",
     org: "Lumbini ICT Campus (Tribhuvan University)",
     type: "edu" as const,
