@@ -96,10 +96,13 @@ const Footer: React.FC = () => {
 
             <div className="flex gap-2 pt-2">
               {[
-                { Icon: Github, href: "https://github.com" },
-                { Icon: Linkedin, href: "https://linkedin.com" },
-                { Icon: Twitter, href: "https://twitter.com" },
-                { Icon: Mail, href: "mailto:hello@example.com" },
+                { Icon: Github, href: "https://www.github.com/rch28" },
+                {
+                  Icon: Linkedin,
+                  href: "https://www.linkedin.com/in/khim-chhetri/",
+                },
+                // { Icon: Twitter, href: "https://twitter.com" },
+                { Icon: Mail, href: "mailto:khim.b.chhetri@gmail.com" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}

@@ -62,25 +62,25 @@ const Contact: React.FC = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/rch28",
       color: "hover:text-white",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/khim-chhetri/",
       color: "hover:text-blue-400",
     },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
-      color: "hover:text-cyan-400",
-    },
+    // {
+    //   icon: Twitter,
+    //   label: "Twitter",
+    //   href: "https://twitter.com",
+    //   color: "hover:text-cyan-400",
+    // },
     {
       icon: Mail,
       label: "Email",
-      href: "mailto:hello@example.com",
+      href: "mailto:khim.b.chhetri@gmail.com",
       color: "hover:text-pink-400",
     },
   ];

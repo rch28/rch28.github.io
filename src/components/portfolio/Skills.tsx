@@ -8,29 +8,29 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "React", level: 95, cat: "frontend", color: "#61DAFB" },
-  { name: "Next.js", level: 92, cat: "frontend", color: "#FFFFFF" },
-  { name: "TypeScript", level: 90, cat: "frontend", color: "#3178C6" },
-  { name: "Tailwind", level: 95, cat: "frontend", color: "#06B6D4" },
+  { name: "React", level: 80, cat: "frontend", color: "#61DAFB" },
+  { name: "Next.js", level: 80, cat: "frontend", color: "#FFFFFF" },
+  { name: "TypeScript", level: 75, cat: "frontend", color: "#3178C6" },
+  { name: "Tailwind", level: 80, cat: "frontend", color: "#06B6D4" },
   // { name: 'Vue.js', level: 75, cat: 'frontend', color: '#42B883' },
-  { name: "Three.js", level: 70, cat: "frontend", color: "#A855F7" },
+  // { name: "Three.js", level: 70, cat: "frontend", color: "#A855F7" },
 
-  { name: "Node.js", level: 92, cat: "backend", color: "#8CC84B" },
-  { name: "Django", level: 85, cat: "backend", color: "#0C4B33" },
-  { name: "Python", level: 88, cat: "backend", color: "#3776AB" },
-  { name: "PostgreSQL", level: 85, cat: "backend", color: "#336791" },
-  { name: "MongoDB", level: 80, cat: "backend", color: "#47A248" },
+  { name: "Node.js", level: 60, cat: "backend", color: "#8CC84B" },
+  // { name: "Django", level:60, cat: "backend", color: "#0C4B33" },
+  // { name: "Python", level: 88, cat: "backend", color: "#3776AB" },
+  { name: "PostgreSQL", level: 70, cat: "backend", color: "#336791" },
+  { name: "MongoDB", level: 70, cat: "backend", color: "#47A248" },
   // { name: "GraphQL", level: 78, cat: "backend", color: "#E10098" },
 
-  { name: "Docker", level: 92, cat: "devops", color: "#2496ED" },
-  { name: "Kubernetes", level: 85, cat: "devops", color: "#326CE5" },
+  { name: "Docker", level: 75, cat: "devops", color: "#2496ED" },
+  // { name: "Kubernetes", level: 85, cat: "devops", color: "#326CE5" },
   // { name: "AWS", level: 88, cat: "devops", color: "#FF9900" },
-  { name: "GitHub Actions", level: 90, cat: "devops", color: "#2088FF" },
+  { name: "GitHub Actions", level: 75, cat: "devops", color: "#2088FF" },
   // { name: "Nginx", level: 85, cat: "devops", color: "#009639" },
   // { name: "Terraform", level: 75, cat: "devops", color: "#7B42BC" },
 
-  { name: "Git", level: 95, cat: "tools", color: "#F05032" },
-  { name: "Linux", level: 90, cat: "tools", color: "#FCC624" },
+  { name: "Git", level: 80, cat: "tools", color: "#F05032" },
+  { name: "Linux", level: 75, cat: "tools", color: "#FCC624" },
   // { name: "Vim", level: 80, cat: "tools", color: "#019733" },
   // { name: "Figma", level: 75, cat: "tools", color: "#F24E1E" },
 ];
@@ -154,22 +154,22 @@ const Skills: React.FC = () => {
           {[
             {
               label: "Frontend Development",
-              value: 92,
+              value: 75,
               color: "from-indigo-500 to-purple-500",
             },
             {
               label: "Backend Engineering",
-              value: 88,
+              value: 70,
               color: "from-emerald-500 to-cyan-500",
             },
             {
               label: "DevOps & Cloud",
-              value: 90,
+              value: 40,
               color: "from-orange-500 to-pink-500",
             },
             {
               label: "System Design",
-              value: 85,
+              value: 40,
               color: "from-cyan-400 to-blue-500",
             },
           ].map((b) => (
