@@ -43,8 +43,8 @@ const Footer: React.FC = () => {
         { label: "Blog", href: "#blog" },
 
         { label: "Resume / CV", href: "#" },
-        { label: "Speaking", href: "#" },
-        { label: "Open Source", href: "#" },
+        // { label: "Speaking", href: "#" },
+        // { label: "Open Source", href: "#" },
       ],
     },
     // {
@@ -153,7 +153,7 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} khim.chhetri — Built with React, Vite &
             ❤
           </div>
-          <div className="flex gap-5 text-xs text-gray-500">
+          {/* <div className="flex gap-5 text-xs text-gray-500">
             <a href="#" className="hover:text-cyan-300">
               Privacy
             </a>
@@ -163,7 +163,7 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-cyan-300">
               Cookies
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
